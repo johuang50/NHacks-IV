@@ -143,6 +143,7 @@ public class HomePageController implements Initializable {
 		countdownTimer.setText((int) DataStorage.getTotalTime() + ":00");
 		timerLabel.setText("0:00");
 		elapsedTimeLabel.setText("0:00");
+		DataStorage.getList().clear();
 	}
 
 	@FXML

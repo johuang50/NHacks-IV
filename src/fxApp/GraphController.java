@@ -21,11 +21,14 @@ public class GraphController implements Initializable {
 		// barchart.setTitle();
 		GraphController.bc = barchart;
 		GraphController.lc = timeQuestionGraph;
+		GraphController.lc2 = timePerQuestionGraph;
 
 	}
 
 	public static void graph() {
 		ArrayList<QuestionData> copy = (ArrayList<QuestionData>) DataStorage.getList().clone();
+
+		double cumulativeSum = 0;
 
 		if (copy.size() < DataStorage.getTotalQuestions()) {
 			copy.remove(copy.size() - 1);
@@ -33,10 +36,16 @@ public class GraphController implements Initializable {
 
 		XYChart.Series<String, Number> series1 = new XYChart.Series<String, Number>();
 		XYChart.Series<String, Number> series2 = new XYChart.Series<String, Number>();
+		XYChart.Series<String, Number> series3 = new XYChart.Series<String, Number>();
 
 		for (QuestionData o : copy) {
+			cumulativeSum += o.getDuration() / 1000.0;
 			series1.getData().add(new XYChart.Data<String, Number>("Q" + o.getNumber(), o.getDuration() / 1000.0));
-			series2.getData().add(new XYChart.Data<String, Number>(Integer.toString(o.getNumber()), o.getDuration() / 1000.0));
+			series2.getData()
+					.add(new XYChart.Data<String, Number>(Integer.toString(o.getNumber()), o.getDuration() / 1000.0));
+			series3.getData().add(new XYChart.Data<String, Number>(Integer.toString(o.getNumber()), cumulativeSum));
+			System.out.println(cumulativeSum);
+
 		}
 
 		bc.setAnimated(false);
@@ -70,7 +79,11 @@ public class GraphController implements Initializable {
 		lc.setAnimated(false);
 		lc.getData().clear();
 		lc.getData().addAll(series2);
-//		setAxisBounds(lc, 2);
+
+		lc2.setAnimated(false);
+		lc2.getData().clear();
+		lc2.getData().addAll(series3);
+		// setAxisBounds(lc, 2);
 
 	}
 
@@ -79,7 +92,7 @@ public class GraphController implements Initializable {
 
 		axis = (NumberAxis) myChart.getXAxis();
 
-//		axis.setAutoRanging(false);
+		// axis.setAutoRanging(false);
 		axis.setTickUnit(1.0);
 		axis.setLowerBound(min);
 
@@ -93,5 +106,9 @@ public class GraphController implements Initializable {
 	private LineChart<String, Number> timeQuestionGraph;
 
 	private static LineChart<String, Number> lc;
+
+	@FXML
+	private LineChart<String, Number> timePerQuestionGraph;
+	private static LineChart<String, Number> lc2;
 
 }
