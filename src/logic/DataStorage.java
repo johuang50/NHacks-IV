@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class DataStorage {
 	private static int index = 0;
@@ -115,6 +116,27 @@ public class DataStorage {
 
 	public static void setTotalQuestions(int totalQuestions) {
 		DataStorage.totalQuestions = totalQuestions;
+	}
+
+	public ArrayList<QuestionData> getSorted() {
+		ArrayList<QuestionData> sorted = (ArrayList<QuestionData>) array.clone();
+		Collections.sort(sorted);
+		return sorted;
+	}
+
+	public double getQuartilePercentCorrect(int quartile) {
+		ArrayList<QuestionData> sorted = getSorted();
+		double totalCount = 0;
+		double correctCount = 0;
+		for (int i = (quartile - 1) * (sorted.size() / 2); i < (quartile) * (sorted.size() / 2); i++) {
+			totalCount++;
+			if (sorted.get(i).isCorrect()) {
+				correctCount++;
+			}
+		}
+
+		return correctCount * 100 / totalCount;
+
 	}
 
 }
