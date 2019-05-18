@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="792.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fxApp.DataController">
+   <children>
+      <TextField fx:id="textField" layoutX="143.0" layoutY="128.0" prefHeight="79.0" prefWidth="474.0" promptText="2,4,etc.">
+         <font>
+            <Font size="35.0" />
+         </font>
+      </TextField>
+      <Button layoutX="173.0" layoutY="252.0" mnemonicParsing="false" onAction="#doCalc" prefHeight="25.0" prefWidth="395.0" text="DO THE CALCULATIONS">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+      <Label layoutX="228.0" layoutY="36.0" prefHeight="49.0" prefWidth="304.0" text="Questions Incorrect:">
+         <font>
+            <Font size="33.0" />
+         </font>
+      </Label>
+   </children>
+</Pane>
