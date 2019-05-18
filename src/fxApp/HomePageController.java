@@ -73,6 +73,8 @@ public class HomePageController implements Initializable {
 		initialTime = System.currentTimeMillis();
 
 		elapsedTimeTimeline.play();
+		
+		lapButton.requestFocus();
 
 		// TimerTask task = new TimerTask() {
 		// public void run() {
@@ -88,7 +90,7 @@ public class HomePageController implements Initializable {
 
 	@FXML
 	private void lapButtonPressed() {
-		if (lapButton.getText().equals("Lap")) {
+		if (lapButton.getText().equals("Next Question")) {
 
 			if (numberOfProblems < DataStorage.getTotalQuestions()) {
 				numberOfProblems++;
@@ -136,7 +138,7 @@ public class HomePageController implements Initializable {
 		if (startStopButton.getText().equals("Start")) {
 			lapButton.setDisable(false);
 			startStopButton.setText("Stop");
-			lapButton.setText("Lap");
+			lapButton.setText("Next Question");
 			startButtonPressed();
 		} else {
 			startStopButton.setText("Start");

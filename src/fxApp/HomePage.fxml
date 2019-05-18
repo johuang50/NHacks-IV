@@ -18,6 +18,6 @@
          </font>
       </Label>
       <Button fx:id="startStopButton" layoutX="175.0" layoutY="180.0" mnemonicParsing="false" onAction="#startStopPressed" prefHeight="25.0" prefWidth="166.0" text="Start" />
-      <Button fx:id="lapButton" layoutX="432.0" layoutY="180.0" mnemonicParsing="false" onAction="#lapButtonPressed" prefHeight="25.0" prefWidth="166.0" text=" Lap" />
+      <Button fx:id="lapButton" layoutX="432.0" layoutY="180.0" mnemonicParsing="false" onAction="#lapButtonPressed" prefHeight="25.0" prefWidth="166.0" text="Next Question" />
    </children>
 </Pane>
