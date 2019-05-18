@@ -10,7 +10,7 @@ public class DataStorage {
 	private static boolean initialized = false;
 	private static ArrayList<QuestionData> array = new ArrayList<QuestionData>();
 
-	private static int totalQuestions = 2;
+	private static int totalQuestions = 500;
 
 	// public void populate(int numberOfQuestions) {
 	// int initializationIndex = 0;
@@ -34,6 +34,7 @@ public class DataStorage {
 
 	public static void spacebarPressed() {
 		if (!initialized) {
+			System.out.println("Question " + (index + 1) + " initialized");
 			// timer.start();
 			array.add(new QuestionData(1, System.currentTimeMillis()));
 			initialized = true;
@@ -47,6 +48,7 @@ public class DataStorage {
 				array.add(new QuestionData(index+1)); // in the spot of index, add a problem number (number + 1)
 			}
 			array.get(index - 1).calculateDuration(System.currentTimeMillis());
+			System.out.println("Question " + (index) + " completed with time of " + array.get(index - 1).getDuration());
 
 			index++;
 

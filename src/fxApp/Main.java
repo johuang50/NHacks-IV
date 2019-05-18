@@ -29,7 +29,7 @@ public class Main extends Application {
 			scene = new Scene(root);
 			primaryStage.setScene(scene);
 			primaryStage.centerOnScreen();
-			primaryStage.setTitle("Exam Coach");
+			primaryStage.setTitle("Exam Chief");
 			setPercentDone(0.95);
 //			primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("frogForce.png")));
 

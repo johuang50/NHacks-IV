@@ -11,6 +11,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.util.Duration;
+import logic.DataStorage;
 
 public class HomePageController implements Initializable {
 	private long initialTime;
@@ -26,8 +27,9 @@ public class HomePageController implements Initializable {
 	private void startButtonPressed() {
 		System.out.println("Start Pressed");
 		timerLabel.setText("0:00");
+		DataStorage.spacebarPressed();
 		initialTime = System.currentTimeMillis();
-
+		
 		fiveSecondsWonder = new Timeline(new KeyFrame(Duration.seconds(1), new EventHandler<ActionEvent>() {
 
 			@Override
@@ -60,7 +62,8 @@ public class HomePageController implements Initializable {
 
 	@FXML
 	private void lapButtonPressed() {
-
+		DataStorage.spacebarPressed();
+		System.out.println("Lap Pressed");
 	}
 
 	@FXML
