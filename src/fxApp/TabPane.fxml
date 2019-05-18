@@ -3,7 +3,7 @@
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 
-<TabPane prefHeight="400.0" prefWidth="792.0" side="BOTTOM" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<TabPane fx:id="tabPane" prefHeight="400.0" prefWidth="792.0" side="BOTTOM" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fxApp.TabController">
   <tabs>
     <Tab text="LGBTQ" />
     <Tab closable="false" text="Configuration">
@@ -11,7 +11,7 @@
             <fx:include fx:id="configWindowPane" source="ConfigWindow.fxml" />
          </content>
       </Tab>
-      <Tab text="Graphs"  > 
+      <Tab text="Graphs"> 
       <content>
             <fx:include fx:id="graphsPane" source="GraphsTab.fxml" />
          </content>
