@@ -10,8 +10,23 @@ import javafx.scene.control.Label;
 public class HomePageController implements Initializable  {
 
 	@Override
-	public void initialize(URL arg0, ResourceBundle arg1) {
-		timerLabel.setText("BIG GAY ~ Abhishek");
+	public void initialize(URL location, ResourceBundle resources) {
+		timerLabel.setText("\"BIG GAY\" ~ Abhishek");
+	}
+	
+	@FXML
+	private void startButtonPressed() {
+		
+	}
+	
+	@FXML
+	private void lapButtonPressed() {
+		
+	}
+	
+	@FXML
+	private void stopButtonPressed() {
+			
 	}
 	
 	@FXML
