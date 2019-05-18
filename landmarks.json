@@ -1,0 +1,19 @@
+{
+  "landmarks": {
+    "Left HAB Level 1": {
+      "x": 105,
+      "y": 63,
+      "theta": 90
+    },
+    "Right HAB Level 1": {
+      "x": 212,
+      "y": 63,
+      "theta": 90
+    },
+    "First Cargo Bay": {
+      "x": 208,
+      "y": 225,
+      "theta": 180
+    }
+  }
+}
