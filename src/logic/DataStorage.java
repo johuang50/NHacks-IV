@@ -1,4 +1,5 @@
 package logic;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
@@ -10,7 +11,7 @@ public class DataStorage {
 	private static boolean initialized = false;
 	private static ArrayList<QuestionData> array = new ArrayList<QuestionData>();
 
-	private static int totalQuestions = 500;
+	private static int totalQuestions, totalTime, extraTime;
 
 	// public void populate(int numberOfQuestions) {
 	// int initializationIndex = 0;
@@ -46,7 +47,7 @@ public class DataStorage {
 			// When the spacebar is pressed the last time, the problem number will be one
 			// more
 			if (index < totalQuestions) {
-				array.add(new QuestionData(index+1)); // in the spot of index, add a problem number (number + 1)
+				array.add(new QuestionData(index + 1)); // in the spot of index, add a problem number (number + 1)
 			}
 			array.get(index - 1).calculateDuration(System.currentTimeMillis());
 			System.out.println("Question " + (index) + " completed with time of " + array.get(index - 1).getDuration());
@@ -75,22 +76,45 @@ public class DataStorage {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 		spacebarPressed();
-		
+
 		try {
 			Thread.sleep(68);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 		spacebarPressed();
-		for(QuestionData o:array) {
+		for (QuestionData o : array) {
 			System.out.println("Problem number: " + o.getNumber() + ", duration: " + o.getDuration());
 		}
-		
 
+	}
+
+	public static int getTotalTime() {
+		return totalTime;
+	}
+
+	public static void setTotalTime(int totalTime) {
+		DataStorage.totalTime = totalTime;
+	}
+
+	public static int getExtraTime() {
+		return extraTime;
+	}
+
+	public static void setExtraTime(int extraTime) {
+		DataStorage.extraTime = extraTime;
+	}
+
+	public static int getTotalQuestions() {
+		return totalQuestions;
+	}
+
+	public static void setTotalQuestions(int totalQuestions) {
+		DataStorage.totalQuestions = totalQuestions;
 	}
 
 }
