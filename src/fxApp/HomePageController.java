@@ -9,6 +9,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.util.Duration;
 import logic.DataStorage;
@@ -78,7 +79,7 @@ public class HomePageController implements Initializable {
 		}
 
 		System.out.println("Lap Pressed");
-		
+
 		initialTime = System.currentTimeMillis();
 
 		fiveSecondsWonder = new Timeline(new KeyFrame(Duration.seconds(1), new EventHandler<ActionEvent>() {
@@ -101,14 +102,28 @@ public class HomePageController implements Initializable {
 		fiveSecondsWonder.play();
 	}
 
-	@FXML
 	private void stopButtonPressed() {
-
 		fiveSecondsWonder.stop();
-
+	}
+	
+	@FXML
+	private void startStopPressed() {
+		if(startStopButton.getText().equals("Start")) {
+			startStopButton.setText("Stop");
+			startButtonPressed();
+		} else {
+			startStopButton.setText("Start");
+			stopButtonPressed();
+		}
 	}
 
 	@FXML
 	private Label timerLabel;
+
+	@FXML
+	private Label elapsedTimeLabel;
+	
+	@FXML
+	private Button startStopButton;
 
 }
