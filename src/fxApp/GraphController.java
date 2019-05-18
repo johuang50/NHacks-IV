@@ -5,6 +5,7 @@ import java.util.ResourceBundle;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.XYChart;
 import logic.DataStorage;
@@ -28,6 +29,18 @@ public class GraphController implements Initializable {
 		bc.setAnimated(false);
 		bc.getData().clear();
 		bc.getData().addAll(series1);
+		
+		
+//		DataStorage.getList().get(1).setCorrect(true);
+		for(int i = 0; i < DataStorage.getList().size(); i ++) {
+			Node n = bc.lookup(".data" + i +".chart-bar");
+			if(DataStorage.getList().get(i).isCorrect()) {
+				
+				n.setStyle("-fx-bar-fill: green");
+			} else {
+				n.setStyle("-fx-bar-fill: red");
+			}
+		}
 
 	}
 

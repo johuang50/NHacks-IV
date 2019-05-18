@@ -2,7 +2,7 @@ package logic;
 
 public class QuestionData implements Comparable<QuestionData> {
 	private int number;
-	private boolean correct;
+	private boolean correct = true;
 	private long timeSpent, timeStamp; // durations are in milliseconds
 
 	public QuestionData(int number) {
@@ -34,6 +34,10 @@ public class QuestionData implements Comparable<QuestionData> {
 
 	public boolean isCorrect() {
 		return correct;
+	}
+	
+	public void setCorrect(boolean correct) {
+		this.correct = correct;
 	}
 
 	@Override
