@@ -37,7 +37,7 @@ public class HomePageController implements Initializable {
 
 	@FXML
 	private void startButtonPressed() {
-		
+
 		System.out.println("Start Pressed");
 		timerLabel.setText("0:00");
 		elapsedTimeLabel.setText("0.0");
@@ -48,8 +48,11 @@ public class HomePageController implements Initializable {
 
 			@Override
 			public void handle(ActionEvent event) {
+				alottedTime = 60
+						* ((DataStorage.getTotalTime() - DataStorage.getExtraTime()) / DataStorage.getTotalQuestions());
 				long elapsedTime = (System.currentTimeMillis() - initialTime) / 1000;
-				long netTime = -(System.currentTimeMillis() - initialTime) / 1000 + timeOffset;
+				long netTime = Math
+						.round(-(System.currentTimeMillis() - initialTime) / 1000 + timeOffset + alottedTime);
 				int elapsedTimeSeconds = Math.round(elapsedTime) % 60, netTimeSeconds = Math.round(netTime) % 60;
 				// netSeparator = ":", elapsedSeparator = ":";
 
@@ -91,7 +94,8 @@ public class HomePageController implements Initializable {
 			// Countdown timer
 			// if (!lapButtonPressedOnce) {
 			// lapButtonPressedOnce = true;
-			long netTime = -(System.currentTimeMillis() - initialTime) / 1000 + timeOffset;
+			long netTime = Math
+					.round(-(System.currentTimeMillis() - initialTime) / 1000 + timeOffset + alottedTime);
 			int netTimeSeconds = Math.round(netTime) % 60;
 			timeOffset += alottedTime;
 			if (netTime <= 0) {
@@ -125,7 +129,7 @@ public class HomePageController implements Initializable {
 	public static void pressLap() {
 		lapStatic.fire();
 	}
-	
+
 	private static Button lapStatic;
 
 	@FXML

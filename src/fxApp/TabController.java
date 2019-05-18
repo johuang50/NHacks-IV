@@ -5,10 +5,7 @@ import java.util.ResourceBundle;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.chart.XYChart;
 import javafx.scene.control.TabPane;
-import logic.DataStorage;
-import logic.QuestionData;
 
 public class TabController implements Initializable {
 
@@ -20,13 +17,12 @@ public class TabController implements Initializable {
 	}
 
 	private void tabChanged(String tabName) {
-		XYChart.Series series1 = new XYChart.Series();
-		series1.setName("fuck this");
-
-		if (tabName.equals("Graphs")) {
-			for (QuestionData o : DataStorage.getList()) {
-				series1.getData().add(new XYChart.Data(o.getNumber(), o.getDuration()));
-			}
+		if (tabName.equals("javafx.scene.control.Tab@5de25226")) {
+			System.out.println("Trying to graph");
+			GraphController.graph();
+		} else {
+			System.out.println("Not graphing");
+			System.out.println(tabName);
 		}
 	}
 
