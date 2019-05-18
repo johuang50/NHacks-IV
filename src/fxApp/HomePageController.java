@@ -17,42 +17,37 @@ import logic.DataStorage;
 public class HomePageController implements Initializable {
 	private int numberOfProblems = 0;
 	private long initialTime;
-	private String netSeparator = ":", elapsedSeparator = ":";
 
 	private long timeOffset = 0;
 	Timeline elapsedTimeTimeline;
 
 	private double alottedTime;
 
-	private boolean lapButtonPressedOnce = false;
-
-	private long previousNetTime;
+	public int increment = 0;
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		timerLabel.setText("0:00");
-		elapsedTimeLabel.setText("10");
+		elapsedTimeLabel.setText("0:00");
 		HomePageController.lapStatic = lapButton;
-	}
-
-	@FXML
-	private void startButtonPressed() {
-
-		System.out.println("Start Pressed");
-		timerLabel.setText("0:00");
-		elapsedTimeLabel.setText("0.0");
-		DataStorage.spacebarPressed();
-		initialTime = System.currentTimeMillis();
 
 		elapsedTimeTimeline = new Timeline(new KeyFrame(Duration.seconds(1), new EventHandler<ActionEvent>() {
 
 			@Override
 			public void handle(ActionEvent event) {
+				increment++;
+				// long difference = 0;
+				// if (paused) {
+				// difference = System.currentTimeMillis() - pauseTime;
+
+				// }
+
 				alottedTime = 60
 						* ((DataStorage.getTotalTime() - DataStorage.getExtraTime()) / DataStorage.getTotalQuestions());
-				long elapsedTime = (System.currentTimeMillis() - initialTime) / 1000;
-				long netTime = Math
-						.round(-(System.currentTimeMillis() - initialTime) / 1000 + timeOffset + alottedTime);
+				// long elapsedTime = (System.currentTimeMillis() - initialTime) / 1000;
+				long elapsedTime = increment;
+
+				long netTime = Math.round(-elapsedTime + timeOffset + alottedTime);
 				int elapsedTimeSeconds = Math.round(elapsedTime) % 60, netTimeSeconds = Math.round(netTime) % 60;
 				// netSeparator = ":", elapsedSeparator = ":";
 
@@ -67,6 +62,16 @@ public class HomePageController implements Initializable {
 			}
 		}));
 		elapsedTimeTimeline.setCycleCount(Timeline.INDEFINITE);
+	}
+
+	@FXML
+	private void startButtonPressed() {
+
+		System.out.println("Start Pressed");
+
+		DataStorage.spacebarPressed();
+		initialTime = System.currentTimeMillis();
+
 		elapsedTimeTimeline.play();
 
 		// TimerTask task = new TimerTask() {
@@ -83,47 +88,70 @@ public class HomePageController implements Initializable {
 
 	@FXML
 	private void lapButtonPressed() {
+		if (lapButton.getText().equals("Lap")) {
 
-		System.out.println("Lap Pressed");
-		if (numberOfProblems < DataStorage.getTotalQuestions()) {
-			numberOfProblems++;
-			alottedTime = 60
-					* ((DataStorage.getTotalTime() - DataStorage.getExtraTime()) / DataStorage.getTotalQuestions());
-			System.out.println(alottedTime);
-			DataStorage.spacebarPressed();
-			// Countdown timer
-			// if (!lapButtonPressedOnce) {
-			// lapButtonPressedOnce = true;
-			long netTime = Math
-					.round(-(System.currentTimeMillis() - initialTime) / 1000 + timeOffset + alottedTime);
-			int netTimeSeconds = Math.round(netTime) % 60;
-			timeOffset += alottedTime;
-			if (netTime <= 0) {
-				timerLabel.setText("-" + (int) netTime / 60 + ":" + String.format("%02d", Math.abs(netTimeSeconds)));
+			if (numberOfProblems < DataStorage.getTotalQuestions()) {
+				numberOfProblems++;
+				alottedTime = 60
+						* ((DataStorage.getTotalTime() - DataStorage.getExtraTime()) / DataStorage.getTotalQuestions());
+				System.out.println(alottedTime);
+				DataStorage.spacebarPressed();
+				// Countdown timer
+				// if (!lapButtonPressedOnce) {
+				// lapButtonPressedOnce = true;
+				long netTime = Math
+						.round(-(System.currentTimeMillis() - initialTime) / 1000 + timeOffset + alottedTime);
+				int netTimeSeconds = Math.round(netTime) % 60;
+				timeOffset += alottedTime;
+				if (netTime <= 0) {
+					timerLabel
+							.setText("-" + (int) netTime / 60 + ":" + String.format("%02d", Math.abs(netTimeSeconds)));
+				} else {
+					timerLabel.setText((int) netTime / 60 + ":" + String.format("%02d", netTimeSeconds));
+				}
 			} else {
-				timerLabel.setText((int) netTime / 60 + ":" + String.format("%02d", netTimeSeconds));
+				System.out.println("All questions havea already been done");
 			}
-		} else {
-			System.out.println("All questions havea already been done");
+		} else if(lapButton.getText().equals("Reset")) {
+			reset();
+			lapButton.setDisable(true);
 		}
 
 	}
 
 	private void stopButtonPressed() {
+		elapsedTimeTimeline.pause();
+	}
+
+	private void reset() {
 		elapsedTimeTimeline.stop();
 		timeOffset = 0;
-
+		increment = 0;
+		timerLabel.setText("0:00");
+		elapsedTimeLabel.setText("0:00");
 	}
 
 	@FXML
 	private void startStopPressed() {
 		if (startStopButton.getText().equals("Start")) {
+			lapButton.setDisable(false);
 			startStopButton.setText("Stop");
+			lapButton.setText("Lap");
 			startButtonPressed();
 		} else {
 			startStopButton.setText("Start");
+			lapButton.setText("Reset");
 			stopButtonPressed();
+			elapsedTimeTimeline.pause();
 		}
+
+		/*
+		 * if(startStopButton.getText().equals("Stop")) { }
+		 * startStopButton.setText("Start and reset"); startButtonPressed();
+		 * 
+		 * } else if(startStopButton.getText().equals("Start and reset")) {
+		 * startStopButton.setText("Start"); stopButtonPressed(); }
+		 */
 	}
 
 	public static void pressLap() {

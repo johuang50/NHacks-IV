@@ -17,13 +17,9 @@ public class TabController implements Initializable {
 	}
 
 	private void tabChanged(String tabName) {
-		if (tabName.equals("javafx.scene.control.Tab@5de25226")) {
-			System.out.println("Trying to graph");
+		if (tabPane.getSelectionModel().isSelected(2)) {
 			GraphController.graph();
-		} else {
-			System.out.println("Not graphing");
-			System.out.println(tabName);
-		}
+		}	
 	}
 
 	@FXML

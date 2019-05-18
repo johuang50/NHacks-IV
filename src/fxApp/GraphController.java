@@ -15,22 +15,24 @@ public class GraphController implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		// barchart.setTitle();
+		GraphController.bc = barchart;
+	}
+
+	public static void graph() {
+		XYChart.Series<String, Number> series1 = new XYChart.Series<String, Number>();
+
+		for (QuestionData o : DataStorage.getList()) {
+			series1.getData().add(new XYChart.Data<String, Number>("Q" + o.getNumber(), o.getDuration()/1000.0));
+		}
+
+		bc.setAnimated(false);
+		bc.getData().clear();
+		bc.getData().addAll(series1);
 
 	}
 
 	@FXML
-	private static BarChart<String, Number> barchart;
+	private BarChart<String, Number> barchart;
 
-	public static void graph() {
-		XYChart.Series series1 = new XYChart.Series();
-		series1.setName("fuck this");
-
-		for (QuestionData o : DataStorage.getList()) {
-			series1.getData().add(new XYChart.Data(o.getNumber(), o.getDuration()));
-		}
-		
-		barchart.getData().add(series1);
-
-	}
-
+	private static BarChart<String, Number> bc;
 }
