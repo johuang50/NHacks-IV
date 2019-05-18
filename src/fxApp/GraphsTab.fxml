@@ -14,10 +14,10 @@
          <content>
             <BarChart fx:id="barchart">
               <xAxis>
-                <CategoryAxis side="BOTTOM" />
+                <CategoryAxis label="Question Number" side="BOTTOM" />
               </xAxis>
               <yAxis>
-                <NumberAxis side="LEFT" />
+                <NumberAxis label="Sec per Question" side="LEFT" />
               </yAxis>
             </BarChart>
          </content>
@@ -43,7 +43,7 @@
                         <CategoryAxis label="Question Number" side="BOTTOM" />
                      </xAxis>
                      <yAxis>
-                        <NumberAxis label="Min per Question" side="LEFT" />
+                        <NumberAxis label="Sec per Question" side="LEFT" />
                      </yAxis>
                   </LineChart>
                </content>
