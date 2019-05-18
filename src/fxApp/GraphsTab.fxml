@@ -31,12 +31,12 @@
                         <CategoryAxis label="Questions Completed" side="BOTTOM" />
                      </xAxis>
                      <yAxis>
-                        <NumberAxis label="Elapsed Time (min)" side="LEFT" />
+                        <NumberAxis label="Elapsed Time (sec)" side="LEFT" />
                      </yAxis>
                   </LineChart>
                </content>
             </TitledPane>
-            <TitledPane prefHeight="200.0" prefWidth="506.0" text="Minutes per Question Graph">
+            <TitledPane prefHeight="200.0" prefWidth="506.0" text="Seconds per Question Graph">
                <content>
                   <LineChart fx:id="timeQuestionGraph" prefHeight="194.0" prefWidth="394.0">
                      <xAxis>
