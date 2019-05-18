@@ -11,9 +11,9 @@
         <columns>
           <TableColumn prefWidth="255.0" text="Question Number" />
             <TableColumn prefWidth="255.0" text="Time Taken (seconds)" />
-            <TableColumn prefWidth="255.0" text="Correct?">
+            <TableColumn prefWidth="255.0">
                <graphic>
-                  <CheckBox mnemonicParsing="false" text="CheckBox" />
+                  <CheckBox mnemonicParsing="false" text="Correct?" />
                </graphic></TableColumn>
         </columns>
       </TableView>
