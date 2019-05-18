@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="250.0" prefWidth="792.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fxApp.HomePageController">
+   <children>
+      <Label fx:id="timerLabel" alignment="CENTER" layoutX="124.0" layoutY="36.0" prefHeight="99.0" prefWidth="515.0" text="10">
+         <font>
+            <Font size="49.0" />
+         </font>
+      </Label>
+   </children>
+</Pane>
