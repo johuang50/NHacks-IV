@@ -24,8 +24,8 @@
          <font>
             <Font size="19.0" />
          </font></Label>
-      <Spinner fx:id="numQuestionField" layoutX="523.0" layoutY="36.0" />
-      <TextField fx:id="totalTimeField" layoutX="523.0" layoutY="98.0" />
+      <Spinner fx:id="numQuestionField" editable="true" layoutX="523.0" layoutY="36.0" />
+      <TextField fx:id="totalTimeField" layoutX="523.0" layoutY="98.0" onAction="#fieldChanged" promptText="Time" />
       <TextField fx:id="timePerQuestionField" layoutX="523.0" layoutY="155.0" />
       <TextField fx:id="extraTimeField" layoutX="523.0" layoutY="214.0" />
       <Label layoutX="206.0" layoutY="288.0" text="Your Testing Configuration" textFill="#121f15" textOverrun="CLIP">
