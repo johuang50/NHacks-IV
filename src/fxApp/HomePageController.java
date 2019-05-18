@@ -15,13 +15,14 @@ import javafx.util.Duration;
 import logic.DataStorage;
 
 public class HomePageController implements Initializable {
+	private int numberOfProblems = 0;
 	private long initialTime;
 	private String netSeparator = ":", elapsedSeparator = ":";
 
 	private long timeOffset = 0;
 	Timeline elapsedTimeTimeline;
 
-	private long alottedTime = 30;
+	private double alottedTime;
 
 	private boolean lapButtonPressedOnce = false;
 
@@ -77,20 +78,27 @@ public class HomePageController implements Initializable {
 	@FXML
 	private void lapButtonPressed() {
 
-		DataStorage.spacebarPressed();
-		// Countdown timer
-		// if (!lapButtonPressedOnce) {
-		// lapButtonPressedOnce = true;
-		long netTime = -(System.currentTimeMillis() - initialTime) / 1000 + timeOffset;
-		int netTimeSeconds = Math.round(netTime) % 60;
-		timeOffset += alottedTime;
-		if (netTime <= 0) {
-			timerLabel.setText("-" + (int) netTime / 60 + ":" + String.format("%02d", Math.abs(netTimeSeconds)));
-		} else {
-			timerLabel.setText((int) netTime / 60 + ":" + String.format("%02d", netTimeSeconds));
-		}
-
 		System.out.println("Lap Pressed");
+		if (numberOfProblems < DataStorage.getTotalQuestions()) {
+			numberOfProblems++;
+			alottedTime = 60
+					* ((DataStorage.getTotalTime() - DataStorage.getExtraTime()) / DataStorage.getTotalQuestions());
+			System.out.println(alottedTime);
+			DataStorage.spacebarPressed();
+			// Countdown timer
+			// if (!lapButtonPressedOnce) {
+			// lapButtonPressedOnce = true;
+			long netTime = -(System.currentTimeMillis() - initialTime) / 1000 + timeOffset;
+			int netTimeSeconds = Math.round(netTime) % 60;
+			timeOffset += alottedTime;
+			if (netTime <= 0) {
+				timerLabel.setText("-" + (int) netTime / 60 + ":" + String.format("%02d", Math.abs(netTimeSeconds)));
+			} else {
+				timerLabel.setText((int) netTime / 60 + ":" + String.format("%02d", netTimeSeconds));
+			}
+		} else {
+			System.out.println("All questions havea already been done");
+		}
 
 	}
 

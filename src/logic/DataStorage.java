@@ -12,7 +12,7 @@ public class DataStorage {
 	private static boolean initialized = false;
 	private static ArrayList<QuestionData> array = new ArrayList<QuestionData>();
 
-	private static int totalQuestions, totalTime, extraTime;
+	private static double totalQuestions = 10.0, totalTime = 10.0 , extraTime = 2.0;
 
 	// public void populate(int numberOfQuestions) {
 	// int initializationIndex = 0;
@@ -94,7 +94,7 @@ public class DataStorage {
 
 	}
 
-	public static int getTotalTime() {
+	public static double getTotalTime() {
 		return totalTime;
 	}
 
@@ -102,7 +102,7 @@ public class DataStorage {
 		DataStorage.totalTime = totalTime;
 	}
 
-	public static int getExtraTime() {
+	public static double getExtraTime() {
 		return extraTime;
 	}
 
@@ -110,7 +110,7 @@ public class DataStorage {
 		DataStorage.extraTime = extraTime;
 	}
 
-	public static int getTotalQuestions() {
+	public static double getTotalQuestions() {
 		return totalQuestions;
 	}
 
