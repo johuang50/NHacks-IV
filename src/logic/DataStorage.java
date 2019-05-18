@@ -138,5 +138,9 @@ public class DataStorage {
 		return correctCount * 100 / totalCount;
 
 	}
+	
+	public static ArrayList<QuestionData> getList() {
+		return array;
+	}
 
 }

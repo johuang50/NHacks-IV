@@ -37,8 +37,10 @@ public class HomePageController implements Initializable {
 
 	@FXML
 	private void startButtonPressed() {
+		
 		System.out.println("Start Pressed");
 		timerLabel.setText("0:00");
+		elapsedTimeLabel.setText("0.0");
 		DataStorage.spacebarPressed();
 		initialTime = System.currentTimeMillis();
 
@@ -105,6 +107,7 @@ public class HomePageController implements Initializable {
 
 	private void stopButtonPressed() {
 		elapsedTimeTimeline.stop();
+		timeOffset = 0;
 
 	}
 
