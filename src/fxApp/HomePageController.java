@@ -50,6 +50,9 @@ public class HomePageController implements Initializable {
 				long netTime = Math.round(-elapsedTime + timeOffset + alottedTime);
 				int elapsedTimeSeconds = Math.round(elapsedTime) % 60, netTimeSeconds = Math.round(netTime) % 60;
 				// netSeparator = ":", elapsedSeparator = ":";
+				
+				double timeLeft = DataStorage.getTotalTime()*60 - elapsedTime;
+				System.out.println(timeLeft);
 
 				elapsedTimeLabel.setText((int) elapsedTime / 60 + ":" + String.format("%02d", elapsedTimeSeconds));
 				if (netTime <= 0) {
@@ -58,6 +61,8 @@ public class HomePageController implements Initializable {
 				} else {
 					timerLabel.setText((int) netTime / 60 + ":" + String.format("%02d", netTimeSeconds));
 				}
+				
+				
 
 			}
 		}));
@@ -73,7 +78,7 @@ public class HomePageController implements Initializable {
 		initialTime = System.currentTimeMillis();
 
 		elapsedTimeTimeline.play();
-		
+
 		lapButton.requestFocus();
 
 		// TimerTask task = new TimerTask() {
@@ -114,7 +119,7 @@ public class HomePageController implements Initializable {
 			} else {
 				System.out.println("All questions havea already been done");
 			}
-		} else if(lapButton.getText().equals("Reset")) {
+		} else if (lapButton.getText().equals("Reset")) {
 			reset();
 			lapButton.setDisable(true);
 		}
