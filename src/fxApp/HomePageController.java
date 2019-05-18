@@ -16,7 +16,13 @@ import logic.DataStorage;
 public class HomePageController implements Initializable {
 	private long initialTime;
 	private String separator = ":";
+
+	private long timeOffset = 0;
 	Timeline fiveSecondsWonder;
+
+	private long alottedTime = 30;
+
+	private boolean lapButtonPressedOnce = false;
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -29,7 +35,7 @@ public class HomePageController implements Initializable {
 		timerLabel.setText("0:00");
 		DataStorage.spacebarPressed();
 		initialTime = System.currentTimeMillis();
-		
+
 		fiveSecondsWonder = new Timeline(new KeyFrame(Duration.seconds(1), new EventHandler<ActionEvent>() {
 
 			@Override
@@ -62,8 +68,37 @@ public class HomePageController implements Initializable {
 
 	@FXML
 	private void lapButtonPressed() {
+
 		DataStorage.spacebarPressed();
+		// Countdown timer
+		if (!lapButtonPressedOnce) {
+			lapButtonPressedOnce = true;
+		} else {
+			timeOffset += alottedTime;
+		}
+
 		System.out.println("Lap Pressed");
+		
+		initialTime = System.currentTimeMillis();
+
+		fiveSecondsWonder = new Timeline(new KeyFrame(Duration.seconds(1), new EventHandler<ActionEvent>() {
+
+			@Override
+			public void handle(ActionEvent event) {
+				long time = timeOffset + (System.currentTimeMillis() - initialTime) / 1000;
+				int seconds = Math.round(time) % 60;
+				separator = ":";
+				if (seconds < 10) {
+
+					separator = separator + 0;
+				}
+
+				timerLabel.setText((int) time / 60 + separator + seconds);
+
+			}
+		}));
+		fiveSecondsWonder.setCycleCount(Timeline.INDEFINITE);
+		fiveSecondsWonder.play();
 	}
 
 	@FXML
