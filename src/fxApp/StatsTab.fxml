@@ -1,16 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
-
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="792.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <TitledPane layoutX="589.0" prefHeight="200.0" prefWidth="200.0" text="Pie Chart Summary">
-         <content>
-            <PieChart fx:id="pieChart" title="Correct/Wrong" />
-         </content>
-      </TitledPane>
+      <HBox prefHeight="235.0" prefWidth="792.0">
+         <children>
+            <TitledPane prefHeight="242.0" prefWidth="202.0" text="Pie Chart Summary">
+               <content>
+                  <PieChart fx:id="pieChart" title="Correct/Wrong" />
+               </content>
+            </TitledPane>
+            <TitledPane prefHeight="235.0" prefWidth="590.0" text="Performance Report">
+               <content>
+                  <VBox prefHeight="209.0" prefWidth="528.0">
+                     <children>
+                        <Label text="Here is how you did:">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                           <padding>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                           </padding>
+                        </Label>
+                        <TextArea disable="true" editable="false" prefHeight="141.0" prefWidth="570.0" promptText="Your summary will be generated here..." />
+                     </children>
+                  </VBox>
+               </content>
+            </TitledPane>
+         </children>
+      </HBox>
    </children>
 </Pane>
