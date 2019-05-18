@@ -25,7 +25,7 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		try {
-			Parent root = FXMLLoader.load(getClass().getResource("HomePage.fxml"));
+			Parent root = FXMLLoader.load(getClass().getResource("MainDisplay.fxml"));
 			scene = new Scene(root);
 			primaryStage.setScene(scene);
 			primaryStage.centerOnScreen();
