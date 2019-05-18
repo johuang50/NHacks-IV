@@ -25,12 +25,13 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		try {
-
+			Parent root = FXMLLoader.load(getClass().getResource("MainDisplay.fxml"));
+			scene = new Scene(root);
 			primaryStage.setScene(scene);
 			primaryStage.centerOnScreen();
-			primaryStage.setTitle("Frog Force Trajectory Generator");
+			primaryStage.setTitle("Exam Coach");
 			setPercentDone(0.95);
-			primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("frogForce.png")));
+//			primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("frogForce.png")));
 
 
 			
@@ -92,11 +93,11 @@ public class Main extends Application {
 
 	public static void main(String[] args) throws Exception {
 //		LauncherImpl.launchApplication(Main.class, PreloaderPage.class, args);
-//		launch(args);
+		launch(args);
 	}
 
 	private void setPercentDone(double percent) {
-		LauncherImpl.notifyPreloader(this, new Preloader.ProgressNotification(percent));
+//		LauncherImpl.notifyPreloader(this, new Preloader.ProgressNotification(percent));
 	}
 
 }

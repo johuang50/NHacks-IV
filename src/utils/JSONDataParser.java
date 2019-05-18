@@ -12,6 +12,8 @@ import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
 
+
+
 public class JSONDataParser {
 
 	public static HashMap<String, Double[]> landmarkFileParser(final String fileName) {

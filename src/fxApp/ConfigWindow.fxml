@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Spinner?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane fx:id="configWindowPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="374.0" prefWidth="792.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label layoutX="97.0" layoutY="30.0" prefHeight="36.0" prefWidth="209.0" text="Number of Questions">
+         <font>
+            <Font size="19.0" />
+         </font></Label>
+      <Label layoutX="97.0" layoutY="92.0" prefHeight="36.0" prefWidth="209.0" text="Total Time (in minutes)">
+         <font>
+            <Font size="19.0" />
+         </font></Label>
+      <Label layoutX="97.0" layoutY="159.0" prefHeight="28.0" prefWidth="209.0" text="Time Per Question">
+         <font>
+            <Font size="19.0" />
+         </font></Label>
+      <Label layoutX="97.0" layoutY="218.0" prefHeight="28.0" prefWidth="209.0" text="Extra Time (if needed)">
+         <font>
+            <Font size="19.0" />
+         </font></Label>
+      <Spinner fx:id="numQuestionField" layoutX="523.0" layoutY="36.0" />
+      <TextField fx:id="totalTimeField" layoutX="523.0" layoutY="98.0" />
+      <TextField fx:id="timePerQuestionField" layoutX="523.0" layoutY="155.0" />
+      <TextField fx:id="extraTimeField" layoutX="523.0" layoutY="214.0" />
+      <Label layoutX="206.0" layoutY="288.0" text="Your Testing Configuration" textFill="#121f15" textOverrun="CLIP">
+         <font>
+            <Font size="32.0" />
+         </font>
+      </Label>
+   </children>
+</Pane>
