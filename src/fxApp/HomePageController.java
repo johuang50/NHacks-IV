@@ -32,6 +32,7 @@ public class HomePageController implements Initializable {
 	public void initialize(URL location, ResourceBundle resources) {
 		timerLabel.setText("0:00");
 		elapsedTimeLabel.setText("10");
+		HomePageController.lapStatic = lapButton;
 	}
 
 	@FXML
@@ -118,6 +119,12 @@ public class HomePageController implements Initializable {
 		}
 	}
 
+	public static void pressLap() {
+		lapStatic.fire();
+	}
+	
+	private static Button lapStatic;
+
 	@FXML
 	private Label timerLabel;
 
@@ -125,6 +132,6 @@ public class HomePageController implements Initializable {
 	private Label elapsedTimeLabel;
 
 	@FXML
-	private Button startStopButton;
+	private Button startStopButton, lapButton;
 
 }
