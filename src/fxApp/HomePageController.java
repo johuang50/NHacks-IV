@@ -24,7 +24,7 @@ public class HomePageController implements Initializable {
 	private long alottedTime = 30;
 
 	private boolean lapButtonPressedOnce = false;
-	
+
 	private long previousNetTime;
 
 	@Override
@@ -47,25 +47,21 @@ public class HomePageController implements Initializable {
 				long elapsedTime = (System.currentTimeMillis() - initialTime) / 1000;
 				long netTime = -(System.currentTimeMillis() - initialTime) / 1000 + timeOffset;
 				int elapsedTimeSeconds = Math.round(elapsedTime) % 60, netTimeSeconds = Math.round(netTime) % 60;
-//				netSeparator = ":", elapsedSeparator = ":";
-				
+				// netSeparator = ":", elapsedSeparator = ":";
 
-				elapsedTimeLabel.setText((int) elapsedTime / 60 + ":"+ String.format("%02d", elapsedTimeSeconds));
-				if(netTime <= 0) {
-					timerLabel.setText("-" +(int) netTime / 60 + ":" + String.format("%02d", Math.abs(netTimeSeconds)));
+				elapsedTimeLabel.setText((int) elapsedTime / 60 + ":" + String.format("%02d", elapsedTimeSeconds));
+				if (netTime <= 0) {
+					timerLabel
+							.setText("-" + (int) netTime / 60 + ":" + String.format("%02d", Math.abs(netTimeSeconds)));
 				} else {
 					timerLabel.setText((int) netTime / 60 + ":" + String.format("%02d", netTimeSeconds));
 				}
 
-				
-			
 			}
 		}));
 		elapsedTimeTimeline.setCycleCount(Timeline.INDEFINITE);
 		elapsedTimeTimeline.play();
-		
 
-		
 		// TimerTask task = new TimerTask() {
 		// public void run() {
 
@@ -83,22 +79,24 @@ public class HomePageController implements Initializable {
 
 		DataStorage.spacebarPressed();
 		// Countdown timer
-//		if (!lapButtonPressedOnce) {
-//			lapButtonPressedOnce = true;
-
-			timeOffset += alottedTime;
-
+		// if (!lapButtonPressedOnce) {
+		// lapButtonPressedOnce = true;
+		long netTime = -(System.currentTimeMillis() - initialTime) / 1000 + timeOffset;
+		int netTimeSeconds = Math.round(netTime) % 60;
+		timeOffset += alottedTime;
+		if (netTime <= 0) {
+			timerLabel.setText("-" + (int) netTime / 60 + ":" + String.format("%02d", Math.abs(netTimeSeconds)));
+		} else {
+			timerLabel.setText((int) netTime / 60 + ":" + String.format("%02d", netTimeSeconds));
+		}
 
 		System.out.println("Lap Pressed");
 
-
-		
 	}
 
 	private void stopButtonPressed() {
 		elapsedTimeTimeline.stop();
-		
-		
+
 	}
 
 	@FXML
