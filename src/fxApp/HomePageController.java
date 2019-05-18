@@ -27,6 +27,7 @@ public class HomePageController implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		countdownTimer.setText((int) DataStorage.getTotalTime() + ":00");
 		timerLabel.setText("0:00");
 		elapsedTimeLabel.setText("0:00");
 		HomePageController.lapStatic = lapButton;
@@ -50,19 +51,23 @@ public class HomePageController implements Initializable {
 				long netTime = Math.round(-elapsedTime + timeOffset + alottedTime);
 				int elapsedTimeSeconds = Math.round(elapsedTime) % 60, netTimeSeconds = Math.round(netTime) % 60;
 				// netSeparator = ":", elapsedSeparator = ":";
-				
-				double timeLeft = DataStorage.getTotalTime()*60 - elapsedTime;
+
+				double timeLeft = DataStorage.getTotalTime() * 60 - elapsedTime;
+
+				int timeLeftSeconds = (int) (Math.round(timeLeft) % 60);
+
 				System.out.println(timeLeft);
 
 				elapsedTimeLabel.setText((int) elapsedTime / 60 + ":" + String.format("%02d", elapsedTimeSeconds));
+
+				countdownTimer.setText((int) timeLeft / 60 + ":" + String.format("%02d", timeLeftSeconds));
+
 				if (netTime <= 0) {
 					timerLabel
 							.setText("-" + (int) netTime / 60 + ":" + String.format("%02d", Math.abs(netTimeSeconds)));
 				} else {
 					timerLabel.setText((int) netTime / 60 + ":" + String.format("%02d", netTimeSeconds));
 				}
-				
-				
 
 			}
 		}));
@@ -117,7 +122,7 @@ public class HomePageController implements Initializable {
 					timerLabel.setText((int) netTime / 60 + ":" + String.format("%02d", netTimeSeconds));
 				}
 			} else {
-				System.out.println("All questions havea already been done");
+				System.out.println("All questions have already been done");
 			}
 		} else if (lapButton.getText().equals("Reset")) {
 			reset();
@@ -134,6 +139,8 @@ public class HomePageController implements Initializable {
 		elapsedTimeTimeline.stop();
 		timeOffset = 0;
 		increment = 0;
+
+		countdownTimer.setText((int) DataStorage.getTotalTime() + ":00");
 		timerLabel.setText("0:00");
 		elapsedTimeLabel.setText("0:00");
 	}
@@ -175,5 +182,8 @@ public class HomePageController implements Initializable {
 
 	@FXML
 	private Button startStopButton, lapButton;
+
+	@FXML
+	private Label countdownTimer;
 
 }
