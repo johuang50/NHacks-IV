@@ -12,7 +12,7 @@
    <children>
       <TitledPane layoutY="200.0" prefHeight="200.0" prefWidth="792.0" text="Data Information and Plots">
          <content>
-            <BarChart>
+            <BarChart fx:id="barchart">
               <xAxis>
                 <CategoryAxis side="BOTTOM" />
               </xAxis>
