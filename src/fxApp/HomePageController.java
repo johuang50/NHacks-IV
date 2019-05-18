@@ -16,18 +16,21 @@ import logic.DataStorage;
 
 public class HomePageController implements Initializable {
 	private long initialTime;
-	private String separator = ":";
+	private String netSeparator = ":", elapsedSeparator = ":";
 
 	private long timeOffset = 0;
-	Timeline fiveSecondsWonder;
+	Timeline elapsedTimeTimeline;
 
 	private long alottedTime = 30;
 
 	private boolean lapButtonPressedOnce = false;
+	
+	private long previousNetTime;
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		timerLabel.setText("0:00");
+		elapsedTimeLabel.setText("10");
 	}
 
 	@FXML
@@ -37,24 +40,32 @@ public class HomePageController implements Initializable {
 		DataStorage.spacebarPressed();
 		initialTime = System.currentTimeMillis();
 
-		fiveSecondsWonder = new Timeline(new KeyFrame(Duration.seconds(1), new EventHandler<ActionEvent>() {
+		elapsedTimeTimeline = new Timeline(new KeyFrame(Duration.seconds(1), new EventHandler<ActionEvent>() {
 
 			@Override
 			public void handle(ActionEvent event) {
-				long time = (System.currentTimeMillis() - initialTime) / 1000;
-				int seconds = Math.round(time) % 60;
-				separator = ":";
-				if (seconds < 10) {
+				long elapsedTime = (System.currentTimeMillis() - initialTime) / 1000;
+				long netTime = -(System.currentTimeMillis() - initialTime) / 1000 + timeOffset;
+				int elapsedTimeSeconds = Math.round(elapsedTime) % 60, netTimeSeconds = Math.round(netTime) % 60;
+//				netSeparator = ":", elapsedSeparator = ":";
+				
 
-					separator = separator + 0;
+				elapsedTimeLabel.setText((int) elapsedTime / 60 + ":"+ String.format("%02d", elapsedTimeSeconds));
+				if(netTime <= 0) {
+					timerLabel.setText("-" +(int) netTime / 60 + ":" + String.format("%02d", Math.abs(netTimeSeconds)));
+				} else {
+					timerLabel.setText((int) netTime / 60 + ":" + String.format("%02d", netTimeSeconds));
 				}
 
-				timerLabel.setText((int) time / 60 + separator + seconds);
-
+				
+			
 			}
 		}));
-		fiveSecondsWonder.setCycleCount(Timeline.INDEFINITE);
-		fiveSecondsWonder.play();
+		elapsedTimeTimeline.setCycleCount(Timeline.INDEFINITE);
+		elapsedTimeTimeline.play();
+		
+
+		
 		// TimerTask task = new TimerTask() {
 		// public void run() {
 
@@ -72,43 +83,27 @@ public class HomePageController implements Initializable {
 
 		DataStorage.spacebarPressed();
 		// Countdown timer
-		if (!lapButtonPressedOnce) {
-			lapButtonPressedOnce = true;
-		} else {
+//		if (!lapButtonPressedOnce) {
+//			lapButtonPressedOnce = true;
+
 			timeOffset += alottedTime;
-		}
+
 
 		System.out.println("Lap Pressed");
 
-		initialTime = System.currentTimeMillis();
 
-		fiveSecondsWonder = new Timeline(new KeyFrame(Duration.seconds(1), new EventHandler<ActionEvent>() {
-
-			@Override
-			public void handle(ActionEvent event) {
-				long time = timeOffset + (System.currentTimeMillis() - initialTime) / 1000;
-				int seconds = Math.round(time) % 60;
-				separator = ":";
-				if (seconds < 10) {
-
-					separator = separator + 0;
-				}
-
-				timerLabel.setText((int) time / 60 + separator + seconds);
-
-			}
-		}));
-		fiveSecondsWonder.setCycleCount(Timeline.INDEFINITE);
-		fiveSecondsWonder.play();
+		
 	}
 
 	private void stopButtonPressed() {
-		fiveSecondsWonder.stop();
+		elapsedTimeTimeline.stop();
+		
+		
 	}
-	
+
 	@FXML
 	private void startStopPressed() {
-		if(startStopButton.getText().equals("Start")) {
+		if (startStopButton.getText().equals("Start")) {
 			startStopButton.setText("Stop");
 			startButtonPressed();
 		} else {
@@ -122,7 +117,7 @@ public class HomePageController implements Initializable {
 
 	@FXML
 	private Label elapsedTimeLabel;
-	
+
 	@FXML
 	private Button startStopButton;
 
