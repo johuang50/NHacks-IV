@@ -33,6 +33,7 @@ public class DataStorage {
 	// }
 
 	public static void spacebarPressed() {
+		System.out.println("test");
 		if (!initialized) {
 			System.out.println("Question " + (index + 1) + " initialized");
 			// timer.start();
