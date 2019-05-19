@@ -3,10 +3,7 @@
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 
-<TabPane fx:id="tabPane" prefHeight="400.0" prefWidth="792.0"
-	side="BOTTOM" tabClosingPolicy="UNAVAILABLE"
-	xmlns="http://javafx.com/javafx/11.0.1"
-	xmlns:fx="http://javafx.com/fxml/1" fx:controller="fxApp.TabController">
+<TabPane fx:id="tabPane" prefHeight="400.0" prefWidth="792.0" side="BOTTOM" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fxApp.TabController">
 	<tabs>
 		<Tab text="Incorrect Questions Panel">
 			<content>
@@ -15,9 +12,13 @@
 		</Tab>
 		<Tab closable="false" text="Configuration">
 			<content>
-				<fx:include fx:id="configWindowPane"
-					source="ConfigWindow.fxml" />
+				<fx:include fx:id="configWindowPane" source="ConfigWindow.fxml" />
 			</content>
+		</Tab>
+      <Tab closable="false" text="Stats"> 
+      <content>
+			<fx:include source="StatsTab.fxml" />
+		</content>
 		</Tab>
 		<Tab text="Graphs">
 			<content>
