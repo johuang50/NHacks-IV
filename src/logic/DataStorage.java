@@ -142,5 +142,12 @@ public class DataStorage {
 	public static ArrayList<QuestionData> getList() {
 		return array;
 	}
+	
+	public static void reset() {
+		index = 0;
+		array.clear();
+		initialized = false;
+		
+	}
 
 }

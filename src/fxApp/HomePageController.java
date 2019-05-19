@@ -31,6 +31,7 @@ public class HomePageController implements Initializable {
 		timerLabel.setText("0:00");
 		elapsedTimeLabel.setText("0:00");
 		HomePageController.lapStatic = lapButton;
+		questionLabel.setText("Question " + Integer.toString(1));
 
 		elapsedTimeTimeline = new Timeline(new KeyFrame(Duration.seconds(1), new EventHandler<ActionEvent>() {
 
@@ -103,7 +104,9 @@ public class HomePageController implements Initializable {
 		if (lapButton.getText().equals("Next Question")) {
 
 			if (numberOfProblems < DataStorage.getTotalQuestions()) {
+
 				numberOfProblems++;
+				questionLabel.setText("Question " + Integer.toString(Math.min(10, (numberOfProblems + 1))));
 				alottedTime = 60
 						* ((DataStorage.getTotalTime() - DataStorage.getExtraTime()) / DataStorage.getTotalQuestions());
 				System.out.println(alottedTime);
@@ -139,11 +142,14 @@ public class HomePageController implements Initializable {
 		elapsedTimeTimeline.stop();
 		timeOffset = 0;
 		increment = 0;
+		numberOfProblems = 0;
 
 		countdownTimer.setText((int) DataStorage.getTotalTime() + ":00");
 		timerLabel.setText("0:00");
 		elapsedTimeLabel.setText("0:00");
-		DataStorage.getList().clear();
+		questionLabel.setText("Question " + Integer.toString(1));
+
+		DataStorage.reset();
 	}
 
 	@FXML
@@ -186,5 +192,8 @@ public class HomePageController implements Initializable {
 
 	@FXML
 	private Label countdownTimer;
+
+	@FXML
+	private Label questionLabel;
 
 }
