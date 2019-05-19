@@ -22,6 +22,9 @@
       <Label layoutX="197.0" layoutY="28.0" text="Time Left On Question" />
       <Label layoutX="480.0" layoutY="28.0" text="Elapsed Time" />
       <Label fx:id="questionLabel" alignment="CENTER_RIGHT" layoutX="631.0" layoutY="200.0" prefHeight="17.0" prefWidth="120.0" text="Question:" />
-      <Label fx:id="countdownTimer" alignment="CENTER" layoutX="658.0" layoutY="20.0" prefHeight="17.0" prefWidth="120.0" text="10" />
+      <Label fx:id="countdownTimer" alignment="CENTER" layoutX="658.0" layoutY="20.0" prefHeight="17.0" prefWidth="120.0" text="10">
+         <font>
+            <Font size="19.0" />
+         </font></Label>
    </children>
 </Pane>
