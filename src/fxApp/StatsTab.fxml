@@ -37,7 +37,7 @@
                                     <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                                  </padding>
                               </Label>
-                              <Button mnemonicParsing="false" onAction="#copyText" prefHeight="38.0" prefWidth="89.0" text="Copy Text">
+                              <Button mnemonicParsing="false" prefHeight="38.0" prefWidth="89.0" text="Copy Text">
                                  <padding>
                                     <Insets left="10.0" right="10.0" />
                                  </padding>

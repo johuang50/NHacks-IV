@@ -51,6 +51,7 @@ public class GraphController implements Initializable {
 		bc.setAnimated(false);
 		bc.getData().clear();
 		bc.getData().addAll(series1);
+		bc.setLegendVisible(true);
 
 		// copy.get(1).setCorrect(true);
 		long timeRequirement = (long) (1000 * 60

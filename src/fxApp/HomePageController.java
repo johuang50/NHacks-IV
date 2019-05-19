@@ -106,7 +106,8 @@ public class HomePageController implements Initializable {
 			if (numberOfProblems < DataStorage.getTotalQuestions()) {
 
 				numberOfProblems++;
-				questionLabel.setText("Question " + Integer.toString(Math.min(10, (numberOfProblems + 1))));
+				questionLabel.setText("Question "
+						+ Integer.toString((int) Math.min(DataStorage.getTotalQuestions(), (numberOfProblems + 1))));
 				alottedTime = 60
 						* ((DataStorage.getTotalTime() - DataStorage.getExtraTime()) / DataStorage.getTotalQuestions());
 				System.out.println(alottedTime);
@@ -126,6 +127,7 @@ public class HomePageController implements Initializable {
 				}
 			} else {
 				System.out.println("All questions have already been done");
+				startStopPressed();
 			}
 		} else if (lapButton.getText().equals("Reset")) {
 			reset();

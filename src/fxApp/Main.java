@@ -25,7 +25,7 @@ public class Main extends Application {
 			scene = new Scene(root);
 			primaryStage.setScene(scene);
 			primaryStage.centerOnScreen();
-			primaryStage.setTitle("Exam Chief");
+			primaryStage.setTitle("Exam Coacher");
 			setPercentDone(0.95);
 			// primaryStage.getIcons().add(new
 			// Image(getClass().getResourceAsStream("frogForce.png")));
@@ -35,15 +35,6 @@ public class Main extends Application {
 				}
 			});
 
-			KeyCombination contrlKeyComb = new KeyCodeCombination(KeyCode.SPACE);
-			scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
-				@Override
-				public void handle(KeyEvent event) {
-					if (contrlKeyComb.match(event)) {
-						HomePageController.pressLap();
-					}
-				}
-			});
 			setPercentDone(1.0);
 			primaryStage.show();
 
@@ -72,26 +63,26 @@ public class Main extends Application {
 
 	@Override
 	public void init() throws Exception {
-//		setPercentDone(0.33);
-//		Parent root = FXMLLoader.load(getClass().getResource("MainDisplay.fxml"));
-//		setPercentDone(0.75);
-//		scene = new Scene(root);
-//		// scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-//
-//		KeyCode[] numberKeyCodes = { KeyCode.DIGIT0, KeyCode.DIGIT1, KeyCode.DIGIT2, KeyCode.DIGIT3, KeyCode.DIGIT4,
-//				KeyCode.DIGIT5, KeyCode.DIGIT6, KeyCode.DIGIT7, KeyCode.DIGIT8, KeyCode.DIGIT9 };
-//		setPercentDone(0.90);
-//		scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
-//			@Override
-//			public void handle(KeyEvent event) {
-//				for (int i = 0; i < numberKeyCodes.length; i++) {
-//					KeyCombination contrlKeyComb = new KeyCodeCombination(numberKeyCodes[i],
-//							KeyCodeCombination.CONTROL_DOWN);
-//					if (contrlKeyComb.match(event)) {
-//					}
-//				}
-//			}
-//		});
+		setPercentDone(0.33);
+		Parent root = FXMLLoader.load(getClass().getResource("MainDisplay.fxml"));
+		setPercentDone(0.75);
+		scene = new Scene(root);
+		// scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+
+		KeyCode[] numberKeyCodes = { KeyCode.DIGIT0, KeyCode.DIGIT1, KeyCode.DIGIT2, KeyCode.DIGIT3, KeyCode.DIGIT4,
+				KeyCode.DIGIT5, KeyCode.DIGIT6, KeyCode.DIGIT7, KeyCode.DIGIT8, KeyCode.DIGIT9 };
+		setPercentDone(0.90);
+		scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
+			@Override
+			public void handle(KeyEvent event) {
+				for (int i = 0; i < numberKeyCodes.length; i++) {
+					KeyCombination contrlKeyComb = new KeyCodeCombination(numberKeyCodes[i],
+							KeyCodeCombination.CONTROL_DOWN);
+					if (contrlKeyComb.match(event)) {
+					}
+				}
+			}
+		});
 
 	}
 

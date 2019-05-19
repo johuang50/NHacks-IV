@@ -17,9 +17,11 @@ public class TabController implements Initializable {
 	}
 
 	private void tabChanged(String tabName) {
-		if (tabPane.getSelectionModel().isSelected(2)) {
+		if (tabPane.getSelectionModel().isSelected(3)) {
 			GraphController.graph();
-		}	
+		} else if (tabPane.getSelectionModel().isSelected(2)) {
+			StatsController.doGraph();
+		}
 	}
 
 	@FXML
