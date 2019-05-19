@@ -18,11 +18,11 @@ public class DataController implements Initializable {
 	private void doCalc() {
 		String[] stringArray = textField.getText().split(",");
 		for (String str : stringArray) {
-			DataStorage.getList().get(Integer.parseInt(str.trim())).setCorrect(false);
+			DataStorage.getList().get(Integer.parseInt(str.trim()) - 1).setCorrect(false);
 		}
 	}
 
 	@FXML
 	private TextField textField;
 
-}	
+}

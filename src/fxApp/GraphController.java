@@ -64,10 +64,10 @@ public class GraphController implements Initializable {
 
 				n.setStyle("-fx-bar-fill: green");
 			} else if (copy.get(i).isCorrect() && duration > timeRequirement) {
-				n.setStyle("-fx-bar-fill: orange");
-
-			} else if (!copy.get(i).isCorrect() && duration < timeRequirement) {
 				n.setStyle("-fx-bar-fill: yellow");
+
+			} else if (!copy.get(i).isCorrect() && duration <= timeRequirement) {
+				n.setStyle("-fx-bar-fill: orange");
 			} else if (!copy.get(i).isCorrect() && duration > timeRequirement) {
 				n.setStyle("-fx-bar-fill: red");
 
