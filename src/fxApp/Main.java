@@ -27,9 +27,7 @@ public class Main extends Application {
 			primaryStage.centerOnScreen();
 			primaryStage.setTitle("Exam Coacher");
 			setPercentDone(0.95);
-			// primaryStage.getIcons().add(new
-			// Image(getClass().getResourceAsStream("frogForce.png")));
-
+		
 			primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
 				public void handle(WindowEvent we) {
 				}
@@ -47,16 +45,7 @@ public class Main extends Application {
 			});
 			wait.play();
 
-			// previewJFrame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
-			// previewJFrame.setSize(1080, 540);
-			// new Thread(new FieldClicker()).start();w
-			// previewJFrame.setTitle("Graph With Field");
-			// previewJFrame.setLocationRelativeTo(null);
-			// previewJFrame.setIconImage(new
-			// javax.swing.ImageIcon(getClass().getResource("frogForce.png")).getImage());
-			// previewJFrame.setResizable(false);
-			// previewJFrame.addMouseListener(new FieldClicker());
-			// previewJFrame.addMouseMotionListener(new FieldClicker());
+		
 		} catch (Exception e) {
 		}
 	}
@@ -87,13 +76,10 @@ public class Main extends Application {
 	}
 
 	public static void main(String[] args) throws Exception {
-		// LauncherImpl.launchApplication(Main.class, PreloaderPage.class, args);
 		launch(args);
 	}
 
 	private void setPercentDone(double percent) {
-		// LauncherImpl.notifyPreloader(this, new
-		// Preloader.ProgressNotification(percent));
 	}
 
 }
